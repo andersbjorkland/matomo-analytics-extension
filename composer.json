@@ -1,0 +1,30 @@
+{
+  "name": "andersbjorkland/matomo-analytics-extension",
+  "description": "This is a rudimentary extension for Bolt CMS that is bringing in statistics from your Matomo analytics page.",
+  "version": "0.1.1",
+  "type": "bolt-extension",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Anders Björkland",
+      "email": "contact@andersbjorkland.online"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.3",
+    "twig/twig": "^2.12 | ^3.0"
+  },
+  "require-dev": {
+    "bolt/core": "^4.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "AndersBjorkland\\MatomoAnalyticsExtension\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "entrypoint": "AndersBjorkland\\MatomoAnalyticsExtension\\Extension"
+  }
+}
