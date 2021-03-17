@@ -1,7 +1,7 @@
 {
   "name": "andersbjorkland/matomo-analytics-extension",
   "description": "This is a rudimentary extension for Bolt CMS that is bringing in statistics from your Matomo analytics page.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "bolt-extension",
   "license": "MIT",
   "authors": [

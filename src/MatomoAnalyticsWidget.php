@@ -26,7 +26,7 @@ class MatomoAnalyticsWidget extends BaseWidget implements TwigAwareInterface, St
     protected $zone;
     protected $cacheDuration;
     protected $statistics;
-    protected $domain;
+    protected $matomoDomain;
 
     /**
      * MatomoAnalyticsWidget constructor.
@@ -79,9 +79,9 @@ class MatomoAnalyticsWidget extends BaseWidget implements TwigAwareInterface, St
     /**
      * @return mixed
      */
-    public function getDomain()
+    public function getMatomoDomain()
     {
-        return $this->domain;
+        return $this->matomoDomain;
     }
 
 
