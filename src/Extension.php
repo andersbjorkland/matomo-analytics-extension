@@ -3,11 +3,12 @@
 namespace AndersBjorkland\MatomoAnalyticsExtension;
 
 use Bolt\Extension\BaseExtension;
-use Symfony\Component\Dotenv\Dotenv;
+use Symfony\Component\Routing\Route;
 
 
 class Extension extends BaseExtension
 {
+
     public function getName(): string
     {
         return "Matomo Analytics";
@@ -15,12 +16,25 @@ class Extension extends BaseExtension
 
     public function initialize(): void
     {
-        $dotenv = new Dotenv();
-        $dotenv->loadEnv(__DIR__.'/.env');
-        $key = $_ENV['MATOMO_API_KEY'];
-        $this->getConfig();
-        dump($this->getConfig());
-        dump($key);
-        //dump($this->config->get('general/matomo'));
+        $configs = $this->getConfig();
+
+        $this->addWidget(new MatomoAnalyticsWidget($configs));
+        $this->addTwigNamespace('matomo-analytics-extension');
+        $this->addListener('kernel.response', [new EventListener(), 'handleEvent']);
     }
+
+    public function getRoutes(): array
+    {
+        return [
+            'matomo_chart' => new Route(
+                '/extensions/matomo-analytics/chart.jpg',
+                ['_controller' => 'AndersBjorkland\MatomoAnalyticsExtension\Controller\ChartsController::index']
+            ),
+            'matomo_debug' => new Route(
+                '/extensions/matomo-analytics/debug',
+                ['_controller' => 'AndersBjorkland\MatomoAnalyticsExtension\Controller\ChartsController::debug']
+            ),
+        ];
+    }
+
 }

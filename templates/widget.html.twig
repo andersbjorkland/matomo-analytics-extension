@@ -1,0 +1,24 @@
+
+<div class="widget">
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-chart-line"></i>
+            {{ extension.name }}
+        </div>
+        <div class="card-body base">
+            <p style="font-weight: lighter; font-size: 0.9rem">Summary of visits over last month.</p>
+            {% for country in widget.statistics %}
+                <div style="
+                    display: flex;
+                    gap: 0.5rem;
+">
+                    <p style="font-weight: bold; min-width: 6rem;">{{ country.label }}</p>
+                    <p>Visits:</p>
+                    <p>{{ country.nb_visits }}</p>
+                </div>
+            {% endfor %}
+            <img src="{{ path('matomo_chart') }}" alt="" style="width: 100%;">
+            <p>Details fetched from <a href="{{ widget.domain }}" rel="noopener" target="_blank">{{ widget.domain }}</a></p>
+        </div>
+    </div>
+</div>
