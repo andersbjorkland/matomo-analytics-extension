@@ -26,8 +26,9 @@ class ChartsController extends AbstractController
         }
         $domain = $configs["matomo_domain"];
         $apiToken = $configs["matomo_api_token"];
+        $idSite = $configs["matomo_site_id"];
 
-        $target = "$domain/index.php?module=API&method=ImageGraph.get&idSite=1"
+        $target = "$domain/index.php?module=API&method=ImageGraph.get&idSite=$idSite"
             . "&apiModule=VisitsSummary&apiAction=get&token_auth=$apiToken&graphType=evolution"
             . "&period=day&date=previous30&width=500&height=250";
 

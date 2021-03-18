@@ -7,18 +7,50 @@
         </div>
         <div class="card-body base">
             <p style="font-weight: lighter; font-size: 0.9rem">Summary of visits over last month.</p>
+            <img src="{{ path('matomo_chart') }}" alt="" style="width: 100%;">
+            <div style="margin-top: 0.5rem; height: 12rem; overflow-y: auto;">
             {% for country in widget.statistics %}
                 <div style="
+                    margin-bottom: 0.5rem;
                     display: flex;
-                    gap: 0.5rem;
-">
-                    <p style="font-weight: bold; min-width: 6rem;">{{ country.label }}</p>
-                    <p>Visits:</p>
-                    <p>{{ country.nb_visits }}</p>
+                    flex-direction: column;">
+                    <div style="
+                            display: flex;
+                            gap: 0.5rem;
+                            align-items: center;
+                            margin: 0;">
+                        <img style="height: 0.8rem; width: auto;"  src="{{ widget.domain ~ country.logo }}" alt="">
+                        <p style="
+                            font-weight: bold;
+                            min-width: 6rem;
+                            margin: 0;">{{ country.label }}</p>
+                    </div>
+                    <div style="
+                            display: flex;
+                            gap: 2rem;
+                            font-size: 0.75rem;
+                            margin: 0 0 0 1.6rem;">
+                        <div style="
+                                display: flex;
+                                flex-direction: column;
+                                gap: 0.1rem;
+                                margin: 0;">
+                            <div>Visits</div>
+                            <div>{{ country.nb_visits }}</div>
+                        </div>
+                        <div style="
+                                display: flex;
+                                flex-direction: column;
+                                gap: 0.1rem;
+                                margin: 0;">
+                            <div>Conversions</div>
+                            <div>{{ country.nb_visits_converted }}</div>
+                        </div>
+                    </div>
                 </div>
             {% endfor %}
-            <img src="{{ path('matomo_chart') }}" alt="" style="width: 100%;">
-            <p>Details fetched from <a href="{{ widget.matomoDomain }}" rel="noopener" target="_blank">{{ widget.domain }}</a></p>
+            </div>
+            <p style="margin-top: 1rem; font-weight: lighter; font-size: 0.9rem; " >Details fetched from <a href="{{ widget.domain }}" rel="noopener" target="_blank">{{ widget.domain }}</a></p>
         </div>
     </div>
 </div>
